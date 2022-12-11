@@ -16,4 +16,4 @@ def registration(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'library/post_detail.html', {'posts': post})
+    return render(request, 'library/post_detail.html', {'post': post})
