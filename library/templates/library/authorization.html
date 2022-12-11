@@ -8,6 +8,6 @@
       <label>Введите Ваш пароль</label>
       <input type="password" name="auth_pass" placeholder="Введите пароль" required >
       <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
-      <a href="registration.html">Зарегестрироваться</a>
+      <a href="{% url 'registration'%}">Зарегестрироваться</a>
     </form>
 {% endblock %}
