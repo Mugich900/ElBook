@@ -1,6 +1,7 @@
 {% extends 'library/base.html' %}
 
 {% block content %}
+<a href="{% url 'post_new' %}">Создать публикацию</a>
 <a href="{% url 'authorization'%}">Войти</a>
     {% for post in posts %}
         <div>
