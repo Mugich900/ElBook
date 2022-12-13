@@ -1,7 +1,7 @@
 {% extends 'library/base.html' %}
 
 {% block content %}
-    <form action="http://127.0.0.1" method="post" name="form">
+    <form method="post">
         <div class="container">
           <label name="login"><b>Логин</b></label>
           <input type="text" placeholder="Введите логин" name="login" required>
@@ -16,7 +16,7 @@
         </div>
       
         <div class="container_signin">
-          <p>Уже есть аккаунт на ElBook? <a href="authorization.html">Войдите</a>.</p>
+          <p>Уже есть аккаунт на ElBook? <a href="{% url 'authorization' %}">Войдите</a>.</p>
         </div>
       </form>
 {% endblock %}

@@ -9,8 +9,11 @@ def index(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'library/index.html', {'posts': posts})
 
-def authorization(request):
-    return render(request, 'library/authorization.html', {})
+def login(request):
+    return render(request, 'registration/login.html', {})
+
+def logout(request):
+    return render(request, 'registration/logout.html', {})
 
 def registration(request):
     return render(request, 'library/registration.html', {})
@@ -45,3 +48,8 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'library/post_new.html', {'form': form})
+
+def post_delete(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect(index)
