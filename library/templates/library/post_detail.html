@@ -1,16 +1,27 @@
 {% extends 'library/base.html' %}
 
 {% block content %}
-    {% if post.published_date %}
-        {{ post.published_date }}
-    {% endif %}
-    {% if user.is_authenticated %}
-        {% if request.user == post.author or user.is_superuser%}
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            <br>
-            <a href="{% url 'post_delete' pk=post.pk %}">Удалить публикацию</a>
+<div class="block_post">
+    <div class="post_info">
+        {% if post.published_date %}
+            <p>Дата публикации: {{ post.published_date }}</p>
+            <p>Автор: {{post.author}}</p>
         {% endif %}
-    {% endif %}
-        <h1>{{ post.title }}</h1>
-    <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+    <div class="post_function">
+        {% if user.is_authenticated %}
+            {% if request.user == post.author or user.is_superuser%}
+                <a href="{% url 'post_edit' pk=post.pk %}">Редактировать</a>
+                <br>
+                <a href="{% url 'post_delete' pk=post.pk %}">Удалить публикацию</a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+<div class="post">
+    <h1>{{ post.title }}</h1>
+    <div class="post_text">
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+</div>
 {% endblock %}

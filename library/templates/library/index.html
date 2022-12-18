@@ -1,16 +1,16 @@
 {% extends 'library/base.html' %}
 
 {% block content %}
-{% if user.is_authenticated == False%}
-    <a href="{% url 'login'%}">Войти</a>
-{%else%}
-    <a href="{% url 'logout' %}">Выход</a>
-{%endif%}
+<div class="wrapper">
     {% for post in posts %}
-        <div>
+        <div class="posts">
             <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-            <p>published: {{ post.published_date }}</p>
-            <p>{{ post.text|linebreaksbr }}</p>
+            <p>Дата публикации: {{ post.published_date }}</p>
+            <p>Автор: {{post.author}}</p>
+            <p>Жанр: {{post.gener}}</p>
+            <br>
+            <p>{{ post.annotation|linebreaksbr }}</p>
         </div>
     {% endfor %}
+</div>
 {% endblock %}

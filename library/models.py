@@ -4,12 +4,13 @@ from django.utils import timezone
 
 
 class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Автор")
+    title = models.CharField(max_length=225, verbose_name="Название")
+    annotation = models.TextField(default='', verbose_name="Описание")
+    text = models.TextField(verbose_name="Текст")
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    gener = models.CharField(max_length=50)
+    gener = models.CharField(max_length=50, verbose_name="Жанр")
 
     def publish(self):
         self.published_date = timezone.now()
